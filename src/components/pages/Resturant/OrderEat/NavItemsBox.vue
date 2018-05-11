@@ -1,5 +1,5 @@
 <template>
-	<div class="nav-items-box" id="nav-items-box">
+	<div class="nav-items-box" id="nav-items-box" ref="itemsBox">
 		<div class="food-kind">
 			<p><span>热销</span>大家喜欢吃，才叫真好吃。</p>
 			<nav-item v-for="n in 10" :key="n"></nav-item>
@@ -47,26 +47,50 @@ import NavItem from './NavItem'
 
 	export default{
 		name : 'NavItemsBox',
-		props:['activeIndex','changeActiveIndex'],
+		props:[
+		  'activeIndex',
+      'changeActiveIndex',
+      'changeScrollTop',
+      'scrollFlag',
+      'closeFlag'
+    ],
 		data (){
 			return {
-				isShow : false
+				isShow : false,
+        scrollTop: 0
 			}
 		},
 		methods:{
 			scrollTo(index){
 				let navItemsBox = document.getElementById("nav-items-box");
-
 			}
 		},
 		watch:{
 			activeIndex (val,oldVal) {
-				console.log(val);
-			}
+			  if(this.scrollFlag){
+          this.$refs.itemsBox.scrollTop = this.$refs.itemsBox.children[val].offsetTop
+        }else{
+          this.closeFlag();
+        }
+			},
+      scrollTop (val, oldVal) {
+        this.changeScrollTop(val);
+        let arr = Array.from(this.$refs.itemsBox.children) ;
+        arr.forEach((item, index) => {
+          if ( val >= item.offsetTop  && val < item.offsetTop + item.offsetHeight ){
+            this.changeActiveIndex( index );
+          }
+        })
+      }
 		},
 		components:{
 			NavItem
-		}
+		},
+		mounted(){
+      this.$refs.itemsBox.addEventListener("scroll", () =>{
+        this.scrollTop = this.$refs.itemsBox.scrollTop;
+      })
+    }
 	}
 </script>
 <style type="text/css" lang="scss" scoped>
@@ -92,6 +116,6 @@ import NavItem from './NavItem'
 				margin-right:0.1rem;
 			}
 		}
-		
+
 	}
 </style>

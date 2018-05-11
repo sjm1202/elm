@@ -12,7 +12,7 @@
 <script type="text/javascript">
 	export default{
 		name : 'NavBar',
-		props:['activeIndex','changeActiveIndex'],
+		props:['activeIndex','changeActiveIndex','openFlag'],
 		data () {
 			return {
 				items: [
@@ -32,12 +32,8 @@
 		},
 		methods: {
 			itemClick(index){
-				console.log(this.activeIndex)
+        this.openFlag();
 				this.changeActiveIndex(index);
-				if(index != 0){
-					document.documentElement.scrollTop = 237.45;
-				}
-				
 			}
 		}
 	}

@@ -18,11 +18,11 @@
 					<p>由于天气原因呢，请您提前下单点餐，本店...</p>
 				</div>
 			</div>
-				
+
 			<div class="res-discount">
 				<p><span class="first">首单</span><span>新用户下单立减17元(不与其他活动同享)</span></p>
 				<p><span>7个优惠</span><i class="fa fa-caret-down"></i></p>
-				
+
 			</div>
 			<div class="red-money">
 				<p><i class="fa fa-diamond"></i>8元无门槛红包</p>
@@ -31,8 +31,8 @@
 		</div>
 		<div class="res-nav">
 			<ul>
-				<router-link 
-			    	tag = 'li' 
+				<router-link
+			    	tag = 'li'
 			    	:to="nav.path"
 			    	v-for="nav in navs"
 					:key="nav.id"
@@ -42,7 +42,7 @@
 				</router-link>
 			</ul>
 		</div>
-		<router-view />
+		<router-view :change-scroll-top="changeScrollTop"/>
 
 	</div>
 </template>
@@ -51,22 +51,34 @@
 		name : 'Resturant',
 		data (){
 			return {
+			  scrollTop : 0,
 				navs : [
 					{id : 1, tit : '点餐' , path :'/order-eat'},
 					{id : 2, tit : '评价' , path :'/comment'},
 					{id : 3, tit : '商家' , path :'/shop'}
 				]
 			}
-		}
+		},
+    methods: {
+		  changeScrollTop (distance) {
+		    if( distance )
+		    this.scrollTop = distance;
+      }
+    },
+    watch: {
+      scrollTop(val,oldVal){
+        document.documentElement.scrollTop = val;
+      }
+    }
 	}
 </script>
-<style type="text/css" lang="scss" scoped> 
+<style type="text/css" lang="scss" scoped>
 	.resturant{
 		height:904.45px;
 		overflow:hidden;
 		.res-header{
 			width: 100%;
-			height:4.7492rem;			
+			height:4.7492rem;
 			.res-top{
 				height:1.36rem;
 				background-image: url("/static/img/header-bg.webp");
@@ -81,14 +93,14 @@
 						color:#fff;
 						margin-left: 0.2rem;
 					}
-				}				
+				}
 			}
 			.res-title{
 				width:100%;
 				height:2.098rem;
 				position:relative;
 				text-align:center;
-				padding-top:0.61rem; 
+				padding-top:0.61rem;
 				img{
 					position: absolute;
 					top: -0.8rem;
@@ -139,8 +151,8 @@
 					background-color: rgb(112, 188, 70);
 					position:relative;
 					color:#fff;
-				    margin-right: 0.1rem; 
-				    
+				    margin-right: 0.1rem;
+
 
 				}
 			}
@@ -176,11 +188,11 @@
 					font-size:0.24rem;
 				}
 				.active{
-					border-bottom: 2px solid #2395ff;		
+					border-bottom: 2px solid #2395ff;
 				}
 			}
 
 		}
-		
+
 	}
 </style>
