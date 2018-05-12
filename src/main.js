@@ -6,7 +6,9 @@ import './modules/rem'
 import './modules/filter'
 //animate.css
 import '_animate.css@3.6.1@animate.css'
-
+//jquery
+import 'jquery'
+import $ from 'jquery'
 //引入全局scss文件
 //在webpack中有一个特性，一切皆模块，在这里，webpack检测到scss文件之后会编译之后再将其拿出去的
 import './stylesheets/main.scss'
