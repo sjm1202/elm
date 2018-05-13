@@ -49,15 +49,15 @@ import NavItem from './NavItem'
 		name : 'NavItemsBox',
 		props:[
 		  'activeIndex',
-      'changeActiveIndex',
-      'changeScrollTop',
-      'scrollFlag',
-      'closeFlag'
-    ],
+	      'changeActiveIndex',
+	      'changeScrollTop',
+	      'scrollFlag',
+	      'closeFlag'
+	    ],
 		data (){
 			return {
 				isShow : false,
-        scrollTop: 0
+       			scrollTop: 0
 			}
 		},
 		methods:{
@@ -66,31 +66,30 @@ import NavItem from './NavItem'
 			}
 		},
 		watch:{
-			activeIndex (val,oldVal) {
+			activeIndex (val) {
 			  if(this.scrollFlag){
-          this.$refs.itemsBox.scrollTop = this.$refs.itemsBox.children[val].offsetTop
-        }else{
-          this.closeFlag();
-        }
+		          this.$refs.itemsBox.scrollTop = this.$refs.itemsBox.children[val].offsetTop;
+		          this.closeFlag();
+		        }
 			},
-      scrollTop (val, oldVal) {
-        this.changeScrollTop(val);
-        let arr = Array.from(this.$refs.itemsBox.children) ;
-        arr.forEach((item, index) => {
-          if ( val >= item.offsetTop  && val < item.offsetTop + item.offsetHeight ){
-            this.changeActiveIndex( index );
-          }
-        })
-      }
+	     	scrollTop (val, oldVal) {
+		        this.changeScrollTop(val);
+		        let arr = Array.from(this.$refs.itemsBox.children) ;
+		        arr.forEach((item, index) => {
+		          if ( val >= item.offsetTop  && val < item.offsetTop + item.offsetHeight ){
+		            this.changeActiveIndex( index );
+		          }
+		        })
+		    }
 		},
 		components:{
 			NavItem
 		},
 		mounted(){
-      this.$refs.itemsBox.addEventListener("scroll", () =>{
-        this.scrollTop = this.$refs.itemsBox.scrollTop;
-      })
-    }
+	        this.$refs.itemsBox.addEventListener("scroll", () =>{
+	        this.scrollTop = this.$refs.itemsBox.scrollTop;
+	      })
+	    }
 	}
 </script>
 <style type="text/css" lang="scss" scoped>

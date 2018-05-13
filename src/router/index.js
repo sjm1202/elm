@@ -5,6 +5,7 @@ import Router from 'vue-router'
 import Home from '@/components/pages/Home/Home'
 import Find from '@/components/pages/Find/Find'
 import Mine from '@/components/pages/Mine/Mine'
+import Login from '@/components/pages/Login/Login'
 import Order from '@/components/pages/Order/Order'
 import Resturant from '@/components/pages/Resturant/Resturant'
       import OrderEat from '@/components/pages/Resturant/OrderEat/OrderEat'
@@ -78,6 +79,11 @@ export default new Router({
                 }
           ]
 
+    },
+    { 
+      path: '/login',
+      name: 'login', 
+      component: Login
     },   
     { 
     	path: '/not-found',

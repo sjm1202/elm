@@ -6,7 +6,7 @@ import './modules/rem'
 import './modules/filter'
 //animate.css
 import '_animate.css@3.6.1@animate.css'
-
+import './modules/directive'
 //引入全局scss文件
 //在webpack中有一个特性，一切皆模块，在这里，webpack检测到scss文件之后会编译之后再将其拿出去的
 import './stylesheets/main.scss'
@@ -16,7 +16,7 @@ import './stylesheets/main.scss'
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import './modules/directive'
+
 //mint-ui
 import MintUI from 'mint-ui'
 import '../node_modules/mint-ui/lib/style.css'
@@ -30,10 +30,13 @@ Vue.config.productionTip = false
 import axios from 'axios'
 Vue.prototype.$http = axios
 
+
+import store from './store'
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

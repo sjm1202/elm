@@ -20,26 +20,31 @@ import FoodFooter from './FoodFooter';
 import NavItemsBox from './NavItemsBox';
 	export default{
 		name : 'OrderEat',
-    props: ['changeScrollTop'],
+        props: ['changeScrollTop'],
 		data () {
 			return {
 				activeIndex : 0,
-        scrollFlag : false
+                scrollFlag : false
 			}
 		},
 		methods:{
 			changeActiveIndex(index){
 				this.activeIndex = index
 			},
-      openFlag () {
-        this.scrollFlag = true;
-      },
-      closeFlag (){
-        this.scrollFlag = false;
-      }
+	        openFlag () {
+	            this.scrollFlag = true;
+	        },
+	        closeFlag () {
+	            this.scrollFlag = false;
+	        }
 		},
 		components : {
 			NavBar, NavItemsBox,FoodFooter
+		},
+		watch: {
+			scrollFlag (val) {
+				console.log(val)
+			}
 		}
 	}
 </script>

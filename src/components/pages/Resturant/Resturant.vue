@@ -51,7 +51,7 @@
 		name : 'Resturant',
 		data (){
 			return {
-			  scrollTop : 0,
+			 	scrollTop : 0,
 				navs : [
 					{id : 1, tit : '点餐' , path :'/order-eat'},
 					{id : 2, tit : '评价' , path :'/comment'},
@@ -59,17 +59,16 @@
 				]
 			}
 		},
-    methods: {
-		  changeScrollTop (distance) {
-		    if( distance )
-		    this.scrollTop = distance;
-      }
-    },
-    watch: {
-      scrollTop(val,oldVal){
-        document.documentElement.scrollTop = val;
-      }
-    }
+	    methods: {
+			changeScrollTop (distance) {
+			    this.scrollTop = distance;
+	        }
+	    },
+	    watch: {
+	        scrollTop(val){
+	            document.documentElement.scrollTop = val;
+	        }
+	    }
 	}
 </script>
 <style type="text/css" lang="scss" scoped>

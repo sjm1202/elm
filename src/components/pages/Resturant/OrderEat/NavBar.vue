@@ -1,7 +1,7 @@
 <template>
 	<div class="nav-bar">
 		<ul>
-			<li v-for = "( item, index ) in items" @touchstart="itemClick(index)"
+			<li v-for = "( item, index ) in items" @click="itemClick(index)"
 			 :class="{ active: (index == activeIndex) }"
 			 >
 				{{item.title}}
@@ -32,7 +32,7 @@
 		},
 		methods: {
 			itemClick(index){
-        this.openFlag();
+        	    this.openFlag();
 				this.changeActiveIndex(index);
 			}
 		}
