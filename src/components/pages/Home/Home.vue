@@ -41,7 +41,7 @@
 		</section>
 		<!-- 推荐商家 -->
 		<div id="shoplist-title" class="shoplist-title">
-		推荐商家		
+		推荐商家
 		</div>
 		<shopping-box></shopping-box>
 	</div>
@@ -52,7 +52,7 @@
 import Classfiy from './Classfiy';
 import ShoppingBox from './ShoppingBox';
 	export default {
-		name : 'Home',	
+		name : 'Home',
 		data () {
 			return {
 				isFixed: false
@@ -67,7 +67,7 @@ import ShoppingBox from './ShoppingBox';
 	}
 </script>
 
-<style type="text/css" lang="scss">
+<style type="text/css" lang="scss" scoped>
 	.header{
 		height:0.89rem;
 		width: 100%;
@@ -131,7 +131,7 @@ import ShoppingBox from './ShoppingBox';
 			width:100%;
 			height:2.10rem;
 		}
-	}	
+	}
 	.activity{
 		width:100%;
 		height:2.20rem;
@@ -175,7 +175,7 @@ import ShoppingBox from './ShoppingBox';
 					height:100%;
 				}
 			}
-		}		
+		}
 	}
 	#shoplist-title {
 	    display: flex;
@@ -198,7 +198,7 @@ import ShoppingBox from './ShoppingBox';
 		}
 		&:after {
 		    margin-left: .17rem;
-		}		
+		}
 	}
-	
+
 </style>
