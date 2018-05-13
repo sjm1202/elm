@@ -60,17 +60,15 @@ import NavItem from './NavItem'
        			scrollTop: 0
 			}
 		},
-		methods:{
-			scrollTo(index){
-				let navItemsBox = document.getElementById("nav-items-box");
-			}
+		methods: {
 		},
 		watch:{
 			activeIndex (val) {
 			  if(this.scrollFlag){
-		          this.$refs.itemsBox.scrollTop = this.$refs.itemsBox.children[val].offsetTop;
-		          this.closeFlag();
-		        }
+          let target = this.$refs.itemsBox.children[val].offsetTop
+          $( this.$refs.itemsBox ).animate({"scrollTop":target},2000)
+          this.closeFlag();
+        }
 			},
 	     	scrollTop (val, oldVal) {
 		        this.changeScrollTop(val);
