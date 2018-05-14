@@ -24,19 +24,19 @@ import NavItemsBox from './NavItemsBox';
 		data () {
 			return {
 				activeIndex : 0,
-                scrollFlag : false
+        scrollFlag : false
 			}
 		},
 		methods:{
 			changeActiveIndex(index){
 				this.activeIndex = index
 			},
-	        openFlag () {
-	            this.scrollFlag = true;
-	        },
-	        closeFlag () {
-	            this.scrollFlag = false;
-	        }
+      openFlag () {
+          this.scrollFlag = true;
+      },
+      closeFlag () {
+          this.scrollFlag = false;
+      }
 		},
 		components : {
 			NavBar, NavItemsBox,FoodFooter

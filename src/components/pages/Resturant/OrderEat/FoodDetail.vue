@@ -2,14 +2,14 @@
 	<div class="food-detail">
 		<div class="food-box" @click.stop="">
 			<div class="img-box">
-				<img src="/static/img/meet.jpg" alt="">
+				<img :src="food.imgSrc" alt="">
 			</div>
 			<div class="food-tit">
-				<h4>香汁排骨饭汤套餐</h4>
-				<p>月售260份 &nbsp;好评率100%</p>
+				<h4>{{food.name}}</h4>
+				<p>月售{{food.sell}}份 &nbsp;好评率{{food.evaluate}}</p>
 				<div class="price">
-					<p><span>￥</span>31.5</p>
-					<p><i class="fa fa-plus-circle"></i></p>
+					<p><span>￥</span>{{food.price}}</p>
+					<p><i class="fa fa-plus-circle" @click="addFoodInCarst(food)"></i></p>
 				</div>
 			</div>
 		</div>
@@ -18,13 +18,14 @@
 
 </template>
 <script type="text/javascript">
-	export default{
-		name : 'FoodDetail',
-		props : ['closeDetail'],
-		methods : {
-			
-		}
-	}
+  import {mapActions} from 'vuex'
+export default{
+  name : 'FoodDetail',
+  props : ['closeDetail', 'food'],
+  methods : {
+    ...mapActions(['addFoodInCarst'])
+  }
+}
 </script>
 <style type="text/css" lang="scss" scoped>
 	.food-detail{
@@ -78,7 +79,7 @@
 				}
 			}
 		}
-		
+
 		.mask{
 			width: 100%;
 			height:100%;
