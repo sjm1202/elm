@@ -50,7 +50,7 @@ export default{
   },
   watch: {
     foods (val) {
-      if (val.length == 0) {
+      if (val.length === 0) {
         this.isShow = false;
       }
     }
@@ -64,7 +64,7 @@ export default{
   },
   data () {
     return {
-      isShow : true
+      isShow : false
     }
   }
 }
